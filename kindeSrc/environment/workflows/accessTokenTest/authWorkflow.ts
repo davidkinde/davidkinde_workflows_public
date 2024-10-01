@@ -2,7 +2,7 @@ import {hello} from "./hello"
 
 export const workflowSettings = {
     id: 'addAccessTokenClaim',
-    trigger: 'm2m:tokens_generated',
+    trigger: 'm2m:token_generation',
     resetClaims: true
 };
 
