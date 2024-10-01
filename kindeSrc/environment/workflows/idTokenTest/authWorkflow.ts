@@ -1,7 +1,7 @@
 import {hello} from "./hello"
 
 export const workflowSettings = {
-    id: 'addUserTokenClaimUpdated',
+    id: 'addUserTokenClaim',
     trigger: 'user:tokens_generation',
     resetClaims: true
 };
