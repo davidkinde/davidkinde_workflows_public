@@ -1,8 +1,7 @@
 export const workflowSettings = {
-    id: "addAccessTokenClaim",
-    trigger: "user:tokens_generation",
+    id: "addM2MTokenClaim",
+    trigger: "m2m:token_generation",
     resetClaims: true,
-    timeout: 10000,
     bindings: {
       console: {},
       "kinde.fetch": {},
@@ -17,8 +16,7 @@ export const workflowSettings = {
   
   export default {
     async handle(event: any) {
-      kinde.accessToken.setCustomClaim("hello", "world");
-      return "testing add user token claim";
+      return "testing m2m tokens";
     },
   };
   
