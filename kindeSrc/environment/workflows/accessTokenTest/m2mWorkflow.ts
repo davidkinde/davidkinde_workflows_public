@@ -1,22 +1,25 @@
+import {hello} from "./hello"
+
 export const workflowSettings = {
-    id: "addM2MTokenClaim",
-    trigger: "m2m:token_generation",
-    resetClaims: true,
+    id: 'addM2MClaim',
+    trigger: 'm2m:token_generation',
     bindings: {
-      console: {},
-      "kinde.fetch": {},
-      "kinde.idToken": {
-        resetClaims: true,
-      },
-      "kinde.accessToken": {
-        resetClaims: true,
-      },
-    },
-  };
-  
-  export default {
+        console: {},
+        'kinde.m2mToken': {
+            resetClaims: true
+        }
+    }
+};
+
+export default {
     async handle(event: any) {
-      return "testing m2m tokens";
+
+        
+        console.log("hello world");
+        console.log("hello world 2");
+        kinde.m2mToken.setCustomClaim('chicken', 'egg');
+        
+        return 'testing add M2M tokens claim';
     },
-  };
-  
+
+}
