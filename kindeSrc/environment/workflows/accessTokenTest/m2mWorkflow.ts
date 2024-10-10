@@ -1,5 +1,6 @@
 export const workflowSettings = {
     id: "addM2MTokenClaim",
+    name: "Modify M2M Token",
     trigger: "m2m:token_generation",
     resetClaims: true,
     bindings: {
