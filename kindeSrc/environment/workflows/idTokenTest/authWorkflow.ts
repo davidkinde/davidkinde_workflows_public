@@ -1,5 +1,5 @@
 export const workflowSettings = {
-    id: "addAccessTokenClaim",
+    id: "addAccessTokenClaimUpdated",
     trigger: "user:tokens_generation",
     resetClaims: true,
     timeout: 10000,
