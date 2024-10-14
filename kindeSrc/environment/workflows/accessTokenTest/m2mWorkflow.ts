@@ -1,21 +1,20 @@
 export const workflowSettings = {
     id: "addM2MTokenClaim",
     trigger: "m2m:token_generation",
+    name: "Modify M2M Token",
     resetClaims: true,
     bindings: {
       console: {},
       "kinde.fetch": {},
-      "kinde.idToken": {
-        resetClaims: true,
-      },
       "kinde.accessToken": {
-        resetClaims: true,
+        resetClaims: false,
       },
     },
   };
   
   export default {
     async handle(event: any) {
+      kinde.accessToken.setCustomClaim("customworkflowclaim", "custom m2m claim");
       return "testing m2m tokens";
     },
   };

@@ -1,6 +1,6 @@
 export const workflowSettings = {
     id: "addAccessTokenClaim",
-    name: "Modify Access Token Updated",
+    name: "Modify Access Token",
     trigger: "user:tokens_generation",
     resetClaims: true,
     timeout: 10000,
@@ -18,7 +18,7 @@ export const workflowSettings = {
   
   export default {
     async handle(event: any) {
-      kinde.accessToken.setCustomClaim("hello", "testing world updated");
+      kinde.accessToken.setCustomClaim("customworkflowclaim", "custom id token claim");
       return "testing add user token claim";
     },
   };
