@@ -14,7 +14,7 @@ export const workflowSettings = {
   
   export default {
     async handle(event: any) {
-      kinde.m2mToken.setCustomClaim("customworkflowclaim", "custom m2m claim");
+      kinde.m2mToken.setCustomClaim("customworkflowclaim", "custom m2m claim v2");
       return "testing m2m tokens";
     },
   };
