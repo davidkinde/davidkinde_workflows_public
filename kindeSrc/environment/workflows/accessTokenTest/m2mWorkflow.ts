@@ -6,7 +6,7 @@ export const workflowSettings = {
     bindings: {
       console: {},
       "kinde.fetch": {},
-      "kinde.accessToken": {
+      "kinde.m2mToken": {
         resetClaims: false,
       },
     },
