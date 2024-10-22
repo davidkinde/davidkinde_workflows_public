@@ -1,8 +1,8 @@
 import { onUserTokenGeneratedEvent,  accessTokenCustomClaims, WorkflowSettings, WorkflowTrigger } from "@kinde/infrastructure"
 
 export const workflowSettings: WorkflowSettings = {
-  id: "addAccessTokenClaim",
-  trigger: WorkflowTrigger.UserTokenGeneration,
+  id: "addM2MTokenClaim",
+  trigger: WorkflowTrigger.M2MTokenGeneration,
   
 };
   
