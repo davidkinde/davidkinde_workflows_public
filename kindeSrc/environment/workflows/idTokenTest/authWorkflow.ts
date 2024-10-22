@@ -3,7 +3,7 @@ import { onUserTokenGeneratedEvent,  accessTokenCustomClaims, WorkflowSettings, 
 export const workflowSettings: WorkflowSettings = {
   id: "addAccessTokenClaim",
   trigger: WorkflowTrigger.UserTokenGeneration,
-  
+  bindings: {}
 };
   
 export default {
