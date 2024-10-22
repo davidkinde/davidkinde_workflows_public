@@ -8,6 +8,7 @@ export const workflowSettings: WorkflowSettings = {
       resetClaims: true,
     },
     "kinde.env": {},
+    "kinde.auth": {},
   },
 };
   
