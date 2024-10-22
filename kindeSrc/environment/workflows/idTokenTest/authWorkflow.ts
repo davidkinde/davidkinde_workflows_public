@@ -13,10 +13,10 @@ export const workflowSettings: WorkflowSettings = {
 export default {
   async handle(event: onUserTokenGeneratedEvent) {
     
-    const accessToken = accessTokenCustomClaims<{ key_number: string, key_string: string, key_sensitive: string, hello: string; ipAddress: string; sub: string}>();
+    const accessToken = accessTokenCustomClaims<{ key_number: number, key_string: string, key_sensitive: string, hello: string; ipAddress: string; sub: string}>();
     accessToken.hello = "Hello there!";
     accessToken.ipAddress = event.request.ipAddress
-    accessToken.key_number = getEnvironmentVariable("KEY_NUMBER")
+    accessToken.key_number = getEnvironmentVariable<number>("KEY_NUMBER")
     accessToken.key_string = getEnvironmentVariable("KEY_STRING")
     accessToken.key_sensitive = getEnvironmentVariable("KEY_SENSITIVE")
 
