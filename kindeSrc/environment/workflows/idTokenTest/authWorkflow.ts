@@ -1,4 +1,4 @@
-import { onUserTokenGeneratedEvent,  accessTokenCustomClaims, WorkflowSettings, WorkflowTrigger, getEnvironmentVariable } from "@kinde/infrastructure"
+import { onUserTokenGeneratedEvent,  accessTokenCustomClaims, WorkflowSettings, WorkflowTrigger, getEnvironmentVariable, denyAccess } from "@kinde/infrastructure"
 
 export const workflowSettings: WorkflowSettings = {
   id: "addAccessTokenClaim",
@@ -21,6 +21,7 @@ export default {
     accessToken.key_string = getEnvironmentVariable("KEY_STRING").value
     accessToken.key_sensitive = getEnvironmentVariable("KEY_SENSITIVE").value
 
+    denyAccess("You shall not pass!");
     
   },
 };
