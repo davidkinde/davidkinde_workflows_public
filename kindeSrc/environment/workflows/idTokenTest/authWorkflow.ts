@@ -7,6 +7,7 @@ export const workflowSettings: WorkflowSettings = {
     "kinde.accessToken": {
       resetClaims: true,
     },
+    "kinde.env": {},
   },
 };
   
