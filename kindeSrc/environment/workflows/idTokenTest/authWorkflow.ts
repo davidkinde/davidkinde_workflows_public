@@ -5,7 +5,7 @@ export const workflowSettings = {
   resetClaims: true,
   timeout: 10000,
   failurePolicy:{
-    action: "stop"
+    action: "continue"
   },
   bindings: {
     console: {},
