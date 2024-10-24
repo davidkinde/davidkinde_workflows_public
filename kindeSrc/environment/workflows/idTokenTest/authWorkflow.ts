@@ -7,6 +7,9 @@ export const workflowSettings = {
   failurePolicy:{
     action: "continue"
   },
+  bindings: {
+
+  },
 };
 
 export default {
