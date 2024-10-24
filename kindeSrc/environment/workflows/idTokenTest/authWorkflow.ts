@@ -7,16 +7,6 @@ export const workflowSettings = {
   failurePolicy:{
     action: "continue"
   },
-  bindings: {
-    console: {},
-    "kinde.fetch": {},
-    "kinde.idToken": {
-      resetClaims: true,
-    },
-    "kinde.accessToken": {
-      resetClaims: true,
-    },
-  },
 };
 
 export default {
