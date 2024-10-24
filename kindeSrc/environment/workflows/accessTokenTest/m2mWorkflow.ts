@@ -7,11 +7,7 @@ export const workflowSettings = {
       action: "stop"
     },
     bindings: {
-      console: {},
-      "kinde.fetch": {},
-      "kinde.m2mToken": {
-        resetClaims: false,
-      },
+
     },
   };
   
