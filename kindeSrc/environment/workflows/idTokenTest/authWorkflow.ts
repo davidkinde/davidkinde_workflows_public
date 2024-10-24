@@ -8,14 +8,7 @@ export const workflowSettings = {
     action: "stop"
   },
   bindings: {
-    console: {},
-    "kinde.fetch": {},
-    "kinde.idToken": {
-      resetClaims: true,
-    },
-    "kinde.accessToken": {
-      resetClaims: true,
-    },
+
   },
 };
 
