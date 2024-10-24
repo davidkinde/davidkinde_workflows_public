@@ -4,7 +4,7 @@ export const workflowSettings = {
     name: "Modify M2M Token",
     resetClaims: true,  
     failurePolicy:{
-      action: "stop"
+      action: "continue"
     },
     bindings: {
       console: {},
