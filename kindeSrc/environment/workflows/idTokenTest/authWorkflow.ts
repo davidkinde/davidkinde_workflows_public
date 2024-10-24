@@ -5,10 +5,17 @@ export const workflowSettings = {
   resetClaims: true,
   timeout: 10000,
   failurePolicy:{
-    action: "continue"
+    action: "stop"
   },
   bindings: {
-
+    console: {},
+    "kinde.fetch": {},
+    "kinde.idToken": {
+      resetClaims: true,
+    },
+    "kinde.accessToken": {
+      resetClaims: true,
+    },
   },
 };
 
