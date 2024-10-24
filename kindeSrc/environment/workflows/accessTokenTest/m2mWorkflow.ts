@@ -2,13 +2,12 @@ export const workflowSettings = {
     id: "addM2MTokenClaim",
     trigger: "m2m:token_generation",
     name: "Modify M2M Token",
-    resetClaims: true,
+    resetClaims: true,  
+    failurePolicy:{
+      action: "stop"
+    },
     bindings: {
-      console: {},
-      "kinde.fetch": {},
-      "kinde.m2mToken": {
-        resetClaims: false,
-      },
+     
     },
   };
   
