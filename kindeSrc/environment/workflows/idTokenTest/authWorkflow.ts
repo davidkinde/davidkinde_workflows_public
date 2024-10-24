@@ -5,7 +5,7 @@ export const workflowSettings = {
   resetClaims: true,
   timeout: 10000,
   failurePolicy:{
-    action: "continue"
+    action: "stop"
   },
   bindings: {
 
@@ -14,7 +14,7 @@ export const workflowSettings = {
 
 export default {
   async handle(event: any) {
-    kinde.accessToken.setCustomClaim("email", "some@email.com");
+    kinde.accessTokenBroken.setCustomClaim("email", "some@email.com");
     kinde.accessToken.setCustomClaim("ip", "192.168.1.1");
     kinde.accessToken.setCustomClaim("this", "that");
     console.log("logging from action", { hello: "world" });
