@@ -3,9 +3,6 @@ export const workflowSettings = {
     trigger: "m2m:token_generation",
     name: "Modify M2M Token",
     resetClaims: true,  
-    failurePolicy:{
-      action: "stop"
-    },
     bindings: {
      
     },
