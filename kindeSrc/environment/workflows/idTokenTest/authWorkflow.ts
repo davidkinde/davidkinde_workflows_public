@@ -8,7 +8,15 @@ export const workflowSettings = {
     action: "continue"
   },
   bindings: {
-
+    console: {},
+    "kinde.fetch": {},
+    "kinde.idToken": {
+      resetClaims: true,
+    },
+    "kinde.env": {},
+    "kinde.accessToken": {
+      resetClaims: true,
+    },
   },
 };
 
@@ -17,6 +25,11 @@ export default {
     kinde.accessToken.setCustomClaim("email", "some@email.com");
     kinde.accessToken.setCustomClaim("ip", "192.168.1.1");
     kinde.accessToken.setCustomClaim("this", "that");
+
+
+    kinde.env.get("test");
+    kinde.env.get("test_secure");
+
     console.log("logging from action", { hello: "world" });
     console.log("logging accesstoken", {
       custom_claims: kinde.accessToken.getCustomClaims(),
