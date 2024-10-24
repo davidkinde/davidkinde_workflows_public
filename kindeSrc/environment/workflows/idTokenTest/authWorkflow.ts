@@ -27,8 +27,10 @@ export default {
     kinde.accessToken.setCustomClaim("this", "that");
 
 
-    kinde.env.get("test");
-    kinde.env.get("test_secure");
+    console.log("logging secure values", {
+      env_var: kinde.env.get("test"),
+      env_var_secure: kinde.env.get("test_secure"),
+    });
 
     console.log("logging from action", { hello: "world" });
     console.log("logging accesstoken", {
