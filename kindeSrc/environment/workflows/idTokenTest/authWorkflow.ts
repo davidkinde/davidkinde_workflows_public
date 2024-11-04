@@ -4,7 +4,9 @@ export const workflowSettings = {
   trigger: "user:tokens_generation",
   resetClaims: true,
   timeout: 10000,
-
+  failurePolicy:{
+    action: "continue"
+  },
   bindings: {
     console: {},
     "kinde.fetch": {},
