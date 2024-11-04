@@ -3,9 +3,10 @@ export const workflowSettings = {
   name: "Modify Access Token",
   trigger: "user:tokens_generation",
   resetClaims: true,
-  timeout: 10000,
-  failurePolicy: "stop",
-
+  timeout: 10000,  
+  failurePolicy:{
+    action: "stop"
+  },
   bindings: {
     console: {},
     "kinde.fetch": {},
