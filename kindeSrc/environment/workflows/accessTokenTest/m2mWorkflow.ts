@@ -7,7 +7,7 @@ export const workflowSettings = {
       action: "continue"
     },
     bindings: {
-
+      "kinde.m2mToken": {},
     },
   };
   
