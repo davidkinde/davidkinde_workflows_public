@@ -20,6 +20,7 @@ export const workflowSettings = {
       resetClaims: true,
     },
     'kinde.risk': {},
+    'kinde.auth': {},
   },
 };
 
