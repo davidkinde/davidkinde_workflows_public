@@ -38,7 +38,7 @@ export default {
     // Risk and deny access
     kinde.risk.setScore(test_data.risk_score);
     console.log("Risk Score", kinde.risk.getScore());
-    if (kinde.risk.getScore() > 50) {
+    if (kinde.risk.getScore() > 40) {
       kinde.auth.denyAccess('Risk score to high - access denied');
       console.log("Denying access...", "true");
     }
