@@ -25,7 +25,7 @@ export const workflowSettings = {
 };
 
 const test_data = {
-  "risk_score": 99,
+  "risk_score": 10,
 }
 
 export default {
