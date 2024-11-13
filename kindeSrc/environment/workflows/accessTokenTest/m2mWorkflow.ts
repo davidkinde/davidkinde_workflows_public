@@ -1,38 +1,21 @@
-export const workflowSettings = {
-    id: "addM2MTokenClaim",
-    trigger: "m2m:token_generation",
-    name: "Modify M2M Token",
-    resetClaims: true,  
-    failurePolicy:{
-      action: "continue"
-    },
-    bindings: {
-      "kinde.m2mToken": {},
-      'kinde.risk': {},
-      'kinde.auth': {},
-    },
-  };
+import {
+  m2mTokenClaims,
+  onUserTokenGeneratedEvent,
+  WorkflowSettings,
+  WorkflowTrigger,
+} from "@kinde/infrastructure";
 
-  const test_data = {
-    "risk_score": 10,
-  }
-  
-  
-  export default {
-    async handle(event: any) {
+export const workflowSettings: WorkflowSettings = {
+  id: "addM2MTokenClaim",
+  trigger: WorkflowTrigger.M2MTokenGeneration,
+};
 
-      // Setting custom claims
-      kinde.m2mToken.setCustomClaim("custom_workflow_claim_key", "custom_workflow_claim_value");
+export default {
+  async handle(event: onUserTokenGeneratedEvent) {
+    const m2mToken = m2mTokenClaims<{
+      hello: string;
+    }>();
 
-      // Risk and deny access
-      kinde.risk.setScore(test_data.risk_score);
-      console.log("Risk Score", kinde.risk.getScore());
-      if (kinde.risk.getScore() > 40) {
-        kinde.auth.denyAccess('Risk score to high - access denied');
-        console.log("Denying access...", "true");
-      }
-
-      return "testing m2m tokens";
-    },
-  };
-  
+    m2mToken.hello = "World!";
+  },
+};
