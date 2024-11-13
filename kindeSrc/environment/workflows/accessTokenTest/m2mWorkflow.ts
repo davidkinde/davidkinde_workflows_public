@@ -8,6 +8,9 @@ import {
 export const workflowSettings: WorkflowSettings = {
   id: "addM2MTokenClaim",
   trigger: "m2m:token_generation",
+  bindings: {
+    "kinde.m2mToken": {},
+  }
 };
 
 export default {
