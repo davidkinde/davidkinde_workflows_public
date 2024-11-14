@@ -33,7 +33,7 @@ export default {
 
     // Setting Ccustom claims
     kinde.accessToken.setCustomClaim("email", "some@email.com");
-    kinde.accessToken.setCustomClaim("ip", "192.168.1.1");
+    kinde.accessToken.setCustomClaim("custom_ip", "192.168.1.1");
     kinde.accessToken.setCustomClaim("this", "that");
 
     // Risk and deny access
