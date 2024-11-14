@@ -29,8 +29,10 @@ const test_data = {
 export default {
   async handle(event: any) {
 
+    // Log the event
+    console.log(event);
 
-    // Setting Ccustom claims
+    // Setting Custom claims
     kinde.accessToken.setCustomClaim("email", "some@email.com");
     kinde.accessToken.setCustomClaim("custom_ip", "192.168.1.1");
     kinde.accessToken.setCustomClaim("this", "that");
