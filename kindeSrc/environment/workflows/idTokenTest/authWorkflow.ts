@@ -16,9 +16,7 @@ export const workflowSettings = {
       resetClaims: true,
     },
     "kinde.env": {},
-    "kinde.accessToken": {
-      resetClaims: true,
-    },
+    "kinde.accessToken": {},
     'kinde.risk': {},
     'kinde.auth': {},
   },
@@ -30,6 +28,7 @@ const test_data = {
 
 export default {
   async handle(event: any) {
+)
 
     // Setting Ccustom claims
     kinde.accessToken.setCustomClaim("email", "some@email.com");
