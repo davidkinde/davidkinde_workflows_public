@@ -26,8 +26,7 @@ const test_data = {
   "risk_score": 10,
 }
 
-export default {
-  async handle(event: any) {
+export default async function (event: any) {
 
     // Log the event
     console.log(event);
