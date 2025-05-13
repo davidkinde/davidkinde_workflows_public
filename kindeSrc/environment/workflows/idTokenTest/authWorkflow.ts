@@ -58,5 +58,4 @@ export default async function (event: any) {
 
     // Return values
     return "testing add user token claim";
-  },
 };
