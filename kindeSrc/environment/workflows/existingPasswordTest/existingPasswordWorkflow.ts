@@ -24,8 +24,8 @@ export const workflowSettings: WorkflowSettings = {
 export default async function Workflow(event: onExistingPasswordProvidedEvent) {
   const { hashedPassword, providedEmail, password, hasUserRecordInKinde } =
     event.context.auth;
-  // try {
-  //   console.log("Existing password run...")
+  try {
+    console.log("Existing password run...")
 
     await fetch(
       "https://timeout",
@@ -39,7 +39,7 @@ export default async function Workflow(event: onExistingPasswordProvidedEvent) {
       }
     );
 
-  // } catch (error) {
-  //   console.error("error", error);
-  // }
+  } catch (error) {
+    console.error("error", error);
+  }
 }
