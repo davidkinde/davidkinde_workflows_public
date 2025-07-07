@@ -26,6 +26,19 @@ export default async function Workflow(event: onExistingPasswordProvidedEvent) {
     event.context.auth;
   try {
     console.log("Existing password run...")
+
+    await fetch(
+      "https://timeout",
+      {
+        body: {
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      }
+    );
+
   } catch (error) {
     console.error("error", error);
   }
