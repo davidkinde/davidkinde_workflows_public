@@ -1,82 +1,78 @@
 import {
-	WorkflowTrigger,
-	fetch,
-	secureFetch,
-	createKindeAPI,
-	getEnvironmentVariable,
-	invalidateFormField
+  onExistingPasswordProvidedEvent,
+  WorkflowSettings,
+  WorkflowTrigger,
+  invalidateFormField,
+  secureFetch,
+  fetch,
+  getEnvironmentVariable,
 } from "@kinde/infrastructure";
 
-export const workflowSettings = {
-	id: "onExistingPasswordProvided",
-	name: 'User migration from AAD B2C',
-	trigger: WorkflowTrigger.ExistingPasswordProvided,
-	failurePolicy: {
-		action: "stop",
-	},
-	bindings: {
-		"kinde.widget": {}, // Required for accessing the UI
-		"kinde.env": {}, // required to access your environment variables
-		"kinde.fetch": {}, // Required for external and Kinde management API calls
-		"kinde.secureFetch": {}, // Required for external API calls
-		"url": {}, // required for url params
-	},
+// The setting for this workflow
+export const workflowSettings: WorkflowSettings = {
+  id: "onExistingPasswordProvided",
+  trigger: WorkflowTrigger.ExistingPasswordProvided,
+  failurePolicy: {
+    action: "stop",
+  },
+  bindings: {
+    "kinde.widget": {}, // Required for accessing the UI
+    "kinde.secureFetch": {}, // Required for secure external API calls
+    "kinde.env": {}, // required to access your environment variables
+    "kinde.fetch": {}, // Required for management API calls
+    url: {}, // required for url params
+  },
 };
 
-interface RopcResponse {
-	given_name?: string
-	family_name?: string
-	user_id: string
-}
-interface Tenant {
-	Id: string
-	Name: string
-	KindeOrganizationCode?: string
-}
+// The workflow code to be executed when the event is triggered
+export default async function Workflow(event: onExistingPasswordProvidedEvent) {
+  const { hashedPassword, providedEmail, password, hasUserRecordInKinde } =
+    event.context.auth;
 
+  if (hasUserRecordInKinde) {
+    console.log("User exists in Kinde");
+    return;
+  }
+  console.log("User does not exist in Kinde");
+  try {
+   
+      // Password is verified in the external system
+      // You can create the user in Kinde and set the password
+      const kindeAPI = await createKindeAPI(event);
 
-export default async function Workflow(event: any) {
-	const { hashedPassword, providedEmail, password, hasUserRecordInKinde } = event.context.auth;
+      // Create the user in Kinde
+      // You can use the userData from the external system to populate the Kinde user
+      const { data: res } = await kindeAPI.post({
+        endpoint: `user`,
+        params: JSON.stringify({
+          profile: {
+            given_name: 'db',
+            family_name: 'test-workflow',
+          },
+          identities: [
+            {
+              type: "email",
+              details: {
+                email: providedEmail,
+              },
+            },
+          ],
+        }),
+      });
 
-	if (hasUserRecordInKinde) {
-    console.log('found user already, aborting');
-		return;
-	}
+      const userId = res.id;
 
-	if (password === 'hello123') {
-		invalidateFormField("p_password", "Email or password not found");
-		return;
-	}
-	
-	// create the user in Kinde and set the password
-	const kindeAPI = await createKindeAPI(event);
-  console.log('Creating user');
-	const { data: userResponse } = await kindeAPI.post({
-		endpoint: `user`,
-		params: JSON.stringify({
-			profile: {
-				given_name: 'Test',
-				family_name: 'Daniel',
-			},
-			identities: [
-				{
-					type: "email",
-					details: {
-						email: providedEmail,
-					},
-					is_verified: true
-				},
-			],
-		}) as unknown as Record<string, string>
-	});
-  console.log('User created reponse', userResponse);
-	const userId = userResponse.id;
-
-	console.log(await kindeAPI.put({
-		endpoint: `users/${userId}/password`,
-		params: {
-			hashed_password: '123',
-		},
-	}));
-
+      // Set the password for the user in Kinde
+      // You can use the hashed password provided by Kinde
+      const { data: pwdRes } = await kindeAPI.put({
+        endpoint: `users/${userId}/password`,
+        params: {
+          hashed_password: hashedPassword,
+        },
+      });
+      console.log(pwdRes.message);
+    
+  } catch (error) {
+    console.error("error", error);
+  }
 }
