@@ -26,10 +26,9 @@ import {
 	event: onUserPreRegistrationEvent // onPostAuthenticationEvent //onUserTokenGeneratedEvent
   ) {
 
-	//const { providedEmail } = event.context.auth;
-	// kinde.auth.denyAccess('Risk score to high - access denied');
-	if (event.context.user.id == "kp_98fa13e493104b869b794d19c6448769") {
-		console.log("Denying access for " + event.context.user.id);
-		denyAccess(`POST EVENT: Workflow denied access for ${event.context.user.id}.`)
+	const { email } = event.context.auth;
+	if (email && email.includes("fail")) {
+		console.log("Denying access for " + email);
+		denyAccess(`Pre-registration: Workflow denied access for ${email}.`)
 	}
 }
