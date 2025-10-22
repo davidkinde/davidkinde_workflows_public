@@ -26,7 +26,8 @@ import {
 	event: onUserPreRegistrationEvent // onPostAuthenticationEvent //onUserTokenGeneratedEvent
   ) {
 
-	console.log("Denying access in pre reg workflow... " + event.context.user);
+	console.log("Denying access in pre reg workflow...", JSON.stringify(event.context.user, null, 2));
 	denyAccess(`Pre-registration: workflow denied access.`);
+	console.log("Workflow end... ");
 
 }
