@@ -27,6 +27,6 @@ import {
   ) {
 
 	console.log("Denying access in pre reg workflow... " + event.context.user);
-	denyAccess(`Pre-registration: workflow denied access.`)
+	denyAccess(`Pre-registration: workflow denied access.`);
 
 }
