@@ -26,9 +26,6 @@ import {
 	event: onUserPreRegistrationEvent // onPostAuthenticationEvent //onUserTokenGeneratedEvent
   ) {
 
-	const { email } = event.context.auth;
-	if (email && email.includes("fail")) {
-		console.log("Denying access for " + email);
-		denyAccess(`Pre-registration: Workflow denied access for ${email}.`)
-	}
+	denyAccess(`Pre-registration: workflow denied access.`)
+
 }
