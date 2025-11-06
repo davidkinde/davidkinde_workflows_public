@@ -27,4 +27,5 @@ export const workflowSettings: WorkflowSettings = {
 // The workflow code to be executed when the event is triggered
 export default async function Workflow(event: onNewPasswordProvidedEvent) {
   console.log("New password provided...", JSON.stringify(event.context.user, null, 2));
+  kinde.auth.denyAccess('Fail test workflow');
 }
