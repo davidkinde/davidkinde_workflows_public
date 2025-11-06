@@ -19,13 +19,9 @@ export const workflowSettings: WorkflowSettings = {
 
 // The workflow code to be executed when the event is triggered
 export default async function Workflow(event: onNewPasswordProvidedEvent) {
-  const isMinCharacters = context.auth.Password.length >= 50;
 
-  if (!isMinCharacters) {
-    // Custom form validation
     invalidateFormField(
       "p_first_password",
       "Your password must be at least 50 characters long"
     );
-  }
 }
