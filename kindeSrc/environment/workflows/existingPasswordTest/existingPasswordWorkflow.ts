@@ -31,6 +31,14 @@ export default async function Workflow(event: onExistingPasswordProvidedEvent) {
 
   if (hasUserRecordInKinde) {
     console.log("User exists in Kinde");
+
+    if (password == 'deny') {
+      kinde.auth.denyAccess('Test - access denied');
+    }
+    if (password == 'fail') {
+      invalidateFormField("p_password", "Test - failed password check");
+    }
+
     return;
   }
   console.log("User does not exist in Kinde");
