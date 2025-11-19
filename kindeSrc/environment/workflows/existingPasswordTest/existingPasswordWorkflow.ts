@@ -20,6 +20,7 @@ export const workflowSettings: WorkflowSettings = {
     "kinde.secureFetch": {}, // Required for secure external API calls
     "kinde.env": {}, // required to access your environment variables
     "kinde.fetch": {}, // Required for management API calls
+    'kinde.auth': {},
     url: {}, // required for url params
   },
 };
@@ -34,6 +35,7 @@ export default async function Workflow(event: onExistingPasswordProvidedEvent) {
 
     if (password == 'workflowdeny') {
       kinde.auth.denyAccess('Test - access denied');
+      console.log("Denying access...", "true");
     }
     if (password == 'workflowfail') {
       invalidateFormField("p_password", "Test - failed password check");
